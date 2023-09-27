@@ -29,10 +29,12 @@
 #include "imgui.h"
 
 #include "hello_vulkan.h"
+#include "imgui_helper.h"
 #include "imgui/imgui_camera_widget.h"
 #include "nvh/cameramanipulator.hpp"
 #include "nvh/fileoperations.hpp"
 #include "nvpsystem.hpp"
+#include "backends/imgui_impl_vulkan.h"
 #include "nvvk/commands_vk.hpp"
 #include "nvvk/context_vk.hpp"
 
