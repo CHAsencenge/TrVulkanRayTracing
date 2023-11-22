@@ -37,6 +37,8 @@
 #include "backends/imgui_impl_vulkan.h"
 #include "nvvk/commands_vk.hpp"
 #include "nvvk/context_vk.hpp"
+#include <imgui/imgui_helper.h>
+#include <imgui/backends/imgui_impl_vulkan.h>
 
 
 //////////////////////////////////////////////////////////////////////////
