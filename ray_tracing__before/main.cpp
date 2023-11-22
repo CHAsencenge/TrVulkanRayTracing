@@ -26,7 +26,9 @@
 
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_vulkan.h"
 #include "imgui.h"
+#include "imgui/imgui_helper.h"
 
 #include "hello_vulkan.h"
 #include "imgui/imgui_camera_widget.h"
@@ -94,7 +96,7 @@ int main(int argc, char** argv)
 
   // Setup camera
   CameraManip.setWindowSize(SAMPLE_WIDTH, SAMPLE_HEIGHT);
-  CameraManip.setLookat(nvmath::vec3f(2.0f, 2.0f, 2.0f), nvmath::vec3f(0, 0, 0), nvmath::vec3f(0, 1, 0));
+  CameraManip.setLookat(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 
   // Setup Vulkan
   if(!glfwVulkanSupported())
@@ -165,7 +167,7 @@ int main(int argc, char** argv)
   helloVk.createPostDescriptor();
   helloVk.createPostPipeline();
   helloVk.updatePostDescriptorSet();
-  nvmath::vec4f clearColor = nvmath::vec4f(1, 1, 1, 1.00f);
+  glm::vec4 clearColor = glm::vec4(1, 1, 1, 1.00f);
 
 
   helloVk.setupGlfwCallbacks(window);

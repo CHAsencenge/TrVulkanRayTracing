@@ -26,7 +26,9 @@
 
 #define IMGUI_DEFINE_MATH_OPERATORS
 #include "backends/imgui_impl_glfw.h"
+#include "backends/imgui_impl_vulkan.h"
 #include "imgui.h"
+#include "imgui/imgui_helper.h"
 
 #include "hello_vulkan.h"
 #include "imgui_helper.h"
@@ -183,10 +185,10 @@ int main(int argc, char** argv)
   helloVk.loadModel(nvh::findFile("media/scenes/cube_modif.obj", defaultSearchPaths, true));
 
   // Set the positions of the instances and reuse the last instance (cube_modif) to use cube_multi instead
-  helloVk.m_instances[1].transform = nvmath::translation_mat4(nvmath::vec3f(0, -1, 0));
-  helloVk.m_instances[2].transform = nvmath::translation_mat4(nvmath::vec3f(2, 0, 2));
+  helloVk.m_instances[1].transform = glm::translate(glm::mat4(1), glm::vec3(0, -1, 0));
+  helloVk.m_instances[2].transform = glm::translate(glm::mat4(1), glm::vec3(2, 0, 2));
   helloVk.m_instances[3].objIndex  = 0;
-  helloVk.m_instances[3].transform = nvmath::translation_mat4(nvmath::vec3f(0, 0, 2));  // SRT - unused
+  helloVk.m_instances[3].transform = glm::translate(glm::mat4(1), glm::vec3(0, 0, 2));  // SRT - unused
 
 
   helloVk.createOffscreenRender();
@@ -209,8 +211,8 @@ int main(int argc, char** argv)
   helloVk.updatePostDescriptorSet();
 
 
-  nvmath::vec4f clearColor   = nvmath::vec4f(1, 1, 1, 1.00f);
-  bool          useRaytracer = true;
+  glm::vec4 clearColor   = glm::vec4(1, 1, 1, 1.00f);
+  bool      useRaytracer = true;
 
 
   helloVk.setupGlfwCallbacks(window);
